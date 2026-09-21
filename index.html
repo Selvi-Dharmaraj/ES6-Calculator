@@ -1,57 +1,218 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>ES6 Calculator</title>
-</head>
-<body>
 
-<h2>ES6 Calculator</h2>
-
-<input type="number" id="num1" placeholder="Enter first number">
-<input type="number" id="num2" placeholder="Enter second number">
-
-<br><br>
-
-<button onclick="calculate('+')">Add</button>
-<button onclick="calculate('-')">Subtract</button>
-<button onclick="calculate('*')">Multiply</button>
-<button onclick="calculate('/')">Divide</button>
-
-<p id="result"></p>
-
-<script>
-    // Arrow function
-    const add = (a, b) => a + b;
-    const subtract = (a, b) => a - b;
-    const multiply = (a, b) => a * b;
-    const divide = (a, b) => a / b;
-
-    // Main calculator function
-    const calculate = (operator) => {
-
-        // let is used for values that can change
-        let num1 = Number(document.getElementById("num1").value);
-        let num2 = Number(document.getElementById("num2").value);
-        let result;
-
-        if (operator === '+') {
-            result = add(num1, num2);
-        } 
-        else if (operator === '-') {
-            result = subtract(num1, num2);
-        } 
-        else if (operator === '*') {
-            result = multiply(num1, num2);
-        } 
-        else if (operator === '/') {
-            result = num2 !== 0 ? divide(num1, num2) : "Cannot divide by zero";
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
         }
 
-        // Template literal
-        document.getElementById("result").innerHTML =
-            `Result: ${num1} ${operator} ${num2} = ${result}`;
-    };
-</script>
+        body {
+            min-height: 100vh;
+            background: #111318;
+            color: #e8e8f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .calculator {
+            width: 100%;
+            max-width: 500px;
+            background: #1d1e22;
+            border: 1px solid #555866;
+            border-radius: 25px;
+            padding: 30px 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
+
+        .input-box {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        input {
+            width: 100%;
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid #555866;
+            background: #292b31;
+            color: white;
+            font-size: 17px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #8b8fa3;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        button {
+            padding: 16px 10px;
+            border: none;
+            border-radius: 12px;
+            background: #45484f;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:active {
+            transform: scale(0.97);
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 20px;
+            background: #20202d;
+            border: 1px solid #57516f;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 19px;
+            word-wrap: break-word;
+        }
+
+        .title-icon {
+            font-size: 35px;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="calculator">
+
+        <h1>
+            <span class="title-icon">🧮</span>
+            ES6 Calculator
+        </h1>
+
+        <div class="input-box">
+
+            <input
+                type="number"
+                id="num1"
+                placeholder="Enter first number"
+            >
+
+            <input
+                type="number"
+                id="num2"
+                placeholder="Enter second number"
+            >
+
+        </div>
+
+        <div class="buttons">
+
+            <button onclick="calculate('+')">
+                ➕ Add
+            </button>
+
+            <button onclick="calculate('-')">
+                ➖ Subtract
+            </button>
+
+            <button onclick="calculate('*')">
+                ✖️ Multiply
+            </button>
+
+            <button onclick="calculate('/')">
+                ➗ Divide
+            </button>
+
+        </div>
+
+        <div class="result" id="result">
+            Result will appear here
+        </div>
+
+    </div>
+
+
+    <script>
+
+        // ES6 Arrow Functions
+
+        const add = (a, b) => a + b;
+
+        const subtract = (a, b) => a - b;
+
+        const multiply = (a, b) => a * b;
+
+        const divide = (a, b) => a / b;
+
+
+        // Main calculator function
+
+        const calculate = (operator) => {
+
+            let num1 =
+                Number(document.getElementById("num1").value);
+
+            let num2 =
+                Number(document.getElementById("num2").value);
+
+            let result;
+
+
+            if (operator === '+') {
+
+                result = add(num1, num2);
+
+            }
+
+            else if (operator === '-') {
+
+                result = subtract(num1, num2);
+
+            }
+
+            else if (operator === '*') {
+
+                result = multiply(num1, num2);
+
+            }
+
+            else if (operator === '/') {
+
+                result =
+                    num2 !== 0
+                    ? divide(num1, num2)
+                    : "Cannot divide by zero";
+
+            }
+
+
+            document.getElementById("result").innerHTML =
+                `Result: ${num1} ${operator} ${num2} = ${result}`;
+
+        };
+
+    </script>
 
 </body>
 </html>
